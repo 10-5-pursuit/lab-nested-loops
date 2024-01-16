@@ -30,7 +30,7 @@ function findElement(matrix, element) {
   // Function implementation.
   let coords = [undefined,undefined];
   matrix.forEach(arr => {
-    if(arr.length == 1){
+    if(arr.length == undefined){
       if(arr == element){
         coords[0] = matrix.indexOf(arr);
         coords[1] = 1;
