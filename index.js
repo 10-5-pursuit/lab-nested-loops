@@ -13,21 +13,21 @@ const schedule = require("./data/schedule")
  */
 function countZeroes(matrix) {
   let count = 0;
-  for(let i = 0; i < matrix.length; i++) {
-    let arr = matrix[i]
-    for(let j = 0; j < arr.length; j++) {
-      if(arr[j] === 0){
-        count++
-      }
-    }
-  }
+  matrix.forEach(arr => arr.forEach(num => num === 0 ? count++ : num))
   return count
 }
-// let number0 = 0;
-// matrix.forEach(arr => arr.forEach(num => num === 0 ? number0++ : num))
-// return number0
+// let countOfZeros = 0;
+// for(let i = 0; i < matrix.length; i++) {
+//   let arr = matrix[i];
+//   for(let j = 0; j < arr.length; j++) {
+//     if(arr[j] === 0){
+//       countOfZeros++
+//     }
+//   }
+// }
+// return countOfZeros
 
-countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
+console.log(countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]]))
 
 /// Problem 2: Search for an Element
 /**
@@ -38,11 +38,21 @@ countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
  * @example
  * // returns 'Element found at row 1, column 1'
  * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
+ * 'Element found at row 1, column 1'
  */
 function findElement(matrix, element) {
-  // Function implementation.
+  for(let i = 0; i < matrix.length; i++) {
+    let arr = matrix[i];
+    for(let j = 0; j < arr.length; j++) {
+      if(arr[j] === element) {
+        return `Element found at row ${i}, column ${j}`
+      }
+    }
+  }
+  return 'Element not found'
 }
 
+console.log(findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5))
 
 /// Problem 3: Grid Coordinate Logger
 
