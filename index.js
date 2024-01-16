@@ -1,3 +1,7 @@
+const gridCalcu = require("./data/gridCalc");
+const schedul = require("./data/schedule");
+
+
 /// Problem 1: Count Zeroes
 /**
  * Counts the number of zeroes in a 2D array.
@@ -9,7 +13,17 @@
  */
 function countZeroes(matrix) {
   // Function implementation.
+  let count=0
+  for (let i=0;i<matrix.length;i++){
+    let arr=matrix[i];
+    for (j=0;j<arr.length;j++){
+    if(arr[j]==0){
+      count++
+    }
+    }
+  }return count;
 }
+// }countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
 
 
 /// Problem 2: Search for an Element
@@ -23,9 +37,16 @@ function countZeroes(matrix) {
  * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
  */
 function findElement(matrix, element) {
-  // Function implementation.
-}
-
+  for (let i=0;i<matrix.length;i++){
+    let arr=matrix[i];
+    for (j=0;j<arr.length;j++){
+    if(arr[j]== element){
+      return `Element found at row ${i}, column ${j}`
+    }
+    }
+    } return 'Element not found'
+  } 
+  
 
 /// Problem 3: Grid Coordinate Logger
 
@@ -38,8 +59,15 @@ function findElement(matrix, element) {
  */
 
 function logGridCoordinates(matrix) {
-  // Function implementation.
-}
+
+  for (let i=0;i<matrix.length;i++){
+    let arr=matrix[i];
+    for (j=0;j<arr.length;j++){
+      console.log (`Element at row ${i}, column ${j} is ${arr[j]}`)
+    }
+    } 
+  } 
+
 
 
 /// Problem 4: School Schedule Organizer
@@ -51,10 +79,29 @@ function logGridCoordinates(matrix) {
  */
 
 function organizeSchedule(schedule) {
-  // Function implementation.
-}
+  let weekSchedule={}
+  let weekday=["Monday","Tuesday","Wednesday","Thursday","Friday"]
+   for (let i=0;i<schedule.length;i++){
+    let sched=[]
+    for (j=0;j<schedule[i].length;j++){
+    sched.push(`${schedule[i][j].subject} with ${schedule[i][j].teacher}`)
+    }
+    if (weekday[i]=="Monday"){
+      weekSchedule["Monday"]=sched;
+    }else if(weekday[i]=="Tuesday"){
+      weekSchedule["Tuesday"]=sched;
+    }else if(weekday[i]=="Wednesday"){
+      weekSchedule["Wednesday"]=sched;
+    }else if(weekday[i]=="Thursday"){
+      weekSchedule["Thursday"]=sched;
+    }else if(weekday[i]=="Friday"){
+      weekSchedule["Friday"]=sched;
+    } 
+ 
 
-
+}   console.log(weekSchedule);
+return weekSchedule; 
+}organizeSchedule(schedul);
 /// Problem 5: Grid Function Calculator (Challenging)
 /**
  * Calculates the sum of results from a grid of functions. You will need to import the grid from data/gridCalc.js.
@@ -64,9 +111,19 @@ function organizeSchedule(schedule) {
  */
 
 function calculateGridFunctions(grid) {
-  // Function implementation.
+  let sum=0;
+  for (let i=0;i<grid.length;i++){
+    for (j=0;j<grid[i].length;j++){
+   let gri=grid[i][j];
+   for (let k in gri){
+    if (typeof gri[k] == 'function'){
+      sum += gri[k].apply(null,gri.params)
+   } 
 }
-
+    }
+  }
+  return sum;
+}
 
 
 module.exports = {
