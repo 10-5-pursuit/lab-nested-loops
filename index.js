@@ -98,6 +98,17 @@ function organizeSchedule(schedule) {
 
 function calculateGridFunctions(grid) {
   // Function implementation.
+  return grid.reduce((total, arr) => {
+    total += arr.reduce((sum, op) => {
+      for(const key in op){
+        if(key != 'params'){
+          sum += op[key](...op.params);
+        }
+      }
+      return sum;
+    },0);
+    return total;
+  },0);
 }
 
 
