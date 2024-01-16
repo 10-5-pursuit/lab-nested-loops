@@ -11,19 +11,21 @@ const exampleScheduleData = require("./data/schedule")
  * countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
  */
 function countZeroes(matrix) {
-  let count = 0;
+  let zeroCount = 0;
   for (let i = 0; i < matrix.length; i++) {
     let arr = matrix[i]
     for (let j = 0; j < arr.length; j++) {
     if (arr[j] === 0) {
-      count++
+      zeroCount++
       }
    }
   }
-return count
+return zeroCount
 }
 countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
 
+// matrix.forEach(arr => arr.forEach(num => num === 0 ? count++ : num))
+// return count
 
 /// Problem 2: Search for an Element
 /**
@@ -36,9 +38,18 @@ countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
  * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
  */
 function findElement(matrix, element) {
-  // Function implementation.
+  for (let i = 0; i < matrix.length; i++) {
+  let arr = matrix[i]
+  for (let j = 0; j < arr.length; j++) {
+    if(arr[j] === element) {
+      return `Element found at row ${i}, column ${j}`
+    }  
+ }
+}
+return "Element not found"
 }
 
+console.log(findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5))
 
 /// Problem 3: Grid Coordinate Logger
 
