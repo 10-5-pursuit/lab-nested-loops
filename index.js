@@ -28,7 +28,24 @@ function countZeroes(matrix) {
  */
 function findElement(matrix, element) {
   // Function implementation.
-  
+  let coords = [undefined,undefined];
+  matrix.forEach(arr => {
+    if(arr.length == 1){
+      if(arr == element){
+        coords[0] = matrix.indexOf(arr);
+        coords[1] = 1;
+      }
+    }
+    else{
+      arr.forEach(num => {
+        if(num == element){
+          coords[0] = matrix.indexOf(arr);
+          coords[1] = arr.indexOf(num);
+        }
+      });
+    }
+  });
+  return coords[0] == undefined ? 'Element not found' : `Element found at row ${coords[0]}, column ${coords[1]}`;
 }
 
 
