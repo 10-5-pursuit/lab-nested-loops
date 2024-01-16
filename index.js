@@ -101,9 +101,6 @@ function organizeSchedule(schedule) {
   return(organized);
 }
 
-const exampleSongData = require("./data/schedule");
-organizeSchedule(exampleSongData);
-
 
 /// Problem 5: Grid Function Calculator (Challenging)
 /**
@@ -115,8 +112,16 @@ organizeSchedule(exampleSongData);
 
 function calculateGridFunctions(grid) {
   // Function implementation.
+  let grandTotal = 0;
+  for (let i = 0; i < grid.length; i++)
+    for (let j = 0; j < grid[i].length; j++){
+      let functionAndParams = grid[i][j];
+      for (key in functionAndParams)
+        if (key != "params") 
+          grandTotal += functionAndParams[key](...functionAndParams.params);
+    }
+  return grandTotal;
 }
-
 
 
 module.exports = {
