@@ -1,16 +1,33 @@
+const grid = require("./data/gridCalc")
+const schedule = require("./data/schedule")
+
+
 /// Problem 1: Count Zeroes
 /**
  * Counts the number of zeroes in a 2D array.
  * @param {number[][]} matrix - A 2D array of numbers.
  * @returns {number} - The count of zeroes in the matrix.
  * @example
- * // returns 2
+ * // returns 2    0           1          2
  * countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
  */
 function countZeroes(matrix) {
-  // Function implementation.
+  let count = 0;
+  for(let i = 0; i < matrix.length; i++) {
+    let arr = matrix[i]
+    for(let j = 0; j < arr.length; j++) {
+      if(arr[j] === 0){
+        count++
+      }
+    }
+  }
+  return count
 }
+// let number0 = 0;
+// matrix.forEach(arr => arr.forEach(num => num === 0 ? number0++ : num))
+// return number0
 
+countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
 
 /// Problem 2: Search for an Element
 /**
@@ -33,7 +50,7 @@ function findElement(matrix, element) {
  * Logs the value and coordinates of each element in a 2D array.
  * @param {any[][]} matrix - A 2D array.
  * @example
- * // logs: 'Element at row 0, column 0 is 1', 'Element at row 0, column 1 is 2', ...
+ *  logs: 'Element at row 0, column 0 is 1', 'Element at row 0, column 1 is 2', ...
  * logGridCoordinates([[1, 2], [3, 4]])
  */
 
