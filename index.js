@@ -79,10 +79,31 @@ function logGridCoordinates(matrix) {
 
 const data = require('./data/schedule.js');
 function organizeSchedule(schedule) {
-  // Function implementation.
+  let mondaySchedule;
+  let organizedSchedule = {
+"Monday": "",
+"Tuesday": [],
+  }
+  for(let i = 0; i < schedule.length; i++){
+    for(let j = 0; j < schedule[i].length; j++){
+      if(schedule[i][j].subject === "Math"){
+        mondaySchedule = (`"${schedule[i][j].subject} with ${schedule[i][j].teacher}", `);
+      } if(schedule[i][j].subject === "History"){
+        mondaySchedule += (`"${schedule[i][j].subject} with ${schedule[i][j].teacher}"`);
+        organizedSchedule.Monday = [`${mondaySchedule}`];
+      }
+    }
+  }
+  return organizedSchedule;
 }
+console.log(organizeSchedule(data)); 
+//console.log(organizeSchedule(data));
+// EXPECTED: {
+// "Monday": ["Math with Mr. Smith", "History with Mrs. Jones"], 
+// "Tuesday": ["Science with Mr. Brown", "English with Ms. Davis"]
+// }
 
-console.log(data);
+
 /// Problem 5: Grid Function Calculator (Challenging)
 /**
  * Calculates the sum of results from a grid of functions. You will need to import the grid from data/gridCalc.js.
@@ -90,11 +111,11 @@ console.log(data);
  * @returns {number} - The sum of the results of all functions in the grid.
  * @example See tests in Jests in index.test.js for examples.
  */
-
+//const data = require('./data/gridCalc.js');
 function calculateGridFunctions(grid) {
   // Function implementation.
 }
-
+//console.log(data);
 
 
 module.exports = {
