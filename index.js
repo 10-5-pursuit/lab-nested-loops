@@ -19,7 +19,7 @@ function countZeroes(matrix) {
     }
     return count;
   };
-console.log(countZeroes(generalArray));
+
 
 /// Problem 2: Search for an Element
 /**
@@ -29,12 +29,22 @@ console.log(countZeroes(generalArray));
  * @returns {string} - The position of the element or 'Element not found'.
  * @example
  * // returns 'Element found at row 1, column 1'
- * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
- */
+*/
+findGivenElement = [
+[1, 2, 3], 
+[4, 5, 6], 
+[7, 8, 9], 
+5];
 function findElement(matrix, element) {
-  // Function implementation.
+  for(let i = 0; i < matrix.length; i++){
+    for(let j = 0; j < matrix[i].length; j++){
+      if(matrix[i][j] === element){
+        return `Element found at row ${i}, column ${j}`;
+      }
+    } 
+  }
+  return "Element not found";
 }
-
 
 /// Problem 3: Grid Coordinate Logger
 
@@ -43,11 +53,19 @@ function findElement(matrix, element) {
  * @param {any[][]} matrix - A 2D array.
  * @example
  * // logs: 'Element at row 0, column 0 is 1', 'Element at row 0, column 1 is 2', ...
- * logGridCoordinates([[1, 2], [3, 4]])
- */
+*/
+logGriddedCoordinates = [
+  [1, 2], 
+  [3, 4]
+];
 
 function logGridCoordinates(matrix) {
-  // Function implementation.
+  let string = "";
+  for(let i = 0; i < matrix.length; i++){
+    for(let j = 0; j < matrix[i].length; j++){
+      console.log(`Element at row ${i}, column ${j} is ${matrix[i][j]}`);
+    } 
+  }
 }
 
 
@@ -59,11 +77,12 @@ function logGridCoordinates(matrix) {
  * @example See tests in Jests in index.test.js for examples.
  */
 
+const data = require('./data/schedule.js');
 function organizeSchedule(schedule) {
   // Function implementation.
 }
 
-
+console.log(data);
 /// Problem 5: Grid Function Calculator (Challenging)
 /**
  * Calculates the sum of results from a grid of functions. You will need to import the grid from data/gridCalc.js.
