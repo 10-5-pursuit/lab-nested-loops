@@ -49,6 +49,9 @@ function findElement(matrix, element) {
 
 function logGridCoordinates(matrix) {
   // Function implementation.
+  for (let row = 0; row < matrix.length; row++)
+  for (let column = 0; column < matrix[row].length; column++)
+    console.log(`Element at row ${row}, column ${column} is ${matrix[row][column]}`);
 }
 
 
