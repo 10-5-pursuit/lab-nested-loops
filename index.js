@@ -29,18 +29,18 @@ function countZeroes(matrix) {
 function findElement(matrix, element) {
   // Function implementation.
   let coords = [undefined,undefined];
-  matrix.forEach(arr => {
+  matrix.forEach((arr, index1) => {
     if(arr.length == undefined){
       if(arr == element){
-        coords[0] = matrix.indexOf(arr);
+        coords[0] = index1;
         coords[1] = 1;
       }
     }
     else{
-      arr.forEach(num => {
+      arr.forEach((num, index2) => {
         if(num == element){
-          coords[0] = matrix.indexOf(arr);
-          coords[1] = arr.indexOf(num);
+          coords[0] = index1;
+          coords[1] = index2;
         }
       });
     }
@@ -61,9 +61,8 @@ function findElement(matrix, element) {
 
 function logGridCoordinates(matrix) {
   // Function implementation.
-  matrix.forEach((arr, index) => arr.forEach(num => {
-    const column = arr.indexOf(num);
-    console.log(`Element at row ${index}, column ${column} is ${num}`);
+  matrix.forEach((arr, index1) => arr.forEach((num, index2) => {
+    console.log(`Element at row ${index1}, column ${index2} is ${num}`);
   })
   );
 }
