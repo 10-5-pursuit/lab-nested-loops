@@ -61,8 +61,12 @@ function findElement(matrix, element) {
 
 function logGridCoordinates(matrix) {
   // Function implementation.
+  matrix.forEach((arr, index) => arr.forEach(num => {
+    const column = arr.indexOf(num);
+    console.log(`Element at row ${index}, column ${column} is ${num}`);
+  })
+  );
 }
-
 
 /// Problem 4: School Schedule Organizer
 /**
