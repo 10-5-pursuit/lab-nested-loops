@@ -106,7 +106,17 @@ function formatClassDetails(classDetails) {
  */
 
 function calculateGridFunctions(grid) {
-}
+    let sum = 0;
+    for (let i = 0; i < grid.length; i++) {
+      for (let j = 0; j < grid[i].length; j++) {
+        const funcObj = grid[i][j];
+        const func = Object.values(funcObj)[0];
+        const params = funcObj.params;
+        sum += func(...params);
+      }
+    }
+    return sum;
+  }
 
 
 module.exports = {
