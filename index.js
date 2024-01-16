@@ -1,4 +1,7 @@
-/// Problem 1: Count Zeroes
+const exampleGrid = require("./data/gridCalc")
+const exampleSchedule = require("./data/schedule")
+
+// Problem 1: Count Zeroes
 /**
  * Counts the number of zeroes in a 2D array.
  * @param {number[][]} matrix - A 2D array of numbers.
@@ -7,10 +10,18 @@
  * // returns 2
  * countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
  */
-function countZeroes(matrix) {
-  // Function implementation.
-}
 
+  function countZeroes(matrix) {
+    let zeroCount = 0;
+     for (let i = 0; i < matrix.length; i++) {
+       for (let j = 0; j < matrix[i].length; j++) {
+         if (matrix[i][j] === 0) {
+           zeroCount++;
+         }
+       }
+     }
+     return zeroCount;
+   }
 
 /// Problem 2: Search for an Element
 /**
@@ -23,9 +34,15 @@ function countZeroes(matrix) {
  * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
  */
 function findElement(matrix, element) {
-  // Function implementation.
-}
-
+    for (let i = 0; i < matrix.length; i++) {
+      for (let j = 0; j < matrix[i].length; j++) {
+        if (matrix[i][j] === element) {
+          return `Element found at row ${i}, column ${j}`;
+        }
+      }
+    }
+    return 'Element not found';
+  }
 
 /// Problem 3: Grid Coordinate Logger
 
@@ -38,9 +55,12 @@ function findElement(matrix, element) {
  */
 
 function logGridCoordinates(matrix) {
-  // Function implementation.
-}
-
+    for (let i = 0; i < matrix.length; i++) {
+      for (let j = 0; j < matrix[i].length; j++) {
+        console.log(`Element at row ${i}, column ${j} is ${matrix[i][j]}`);
+      }
+    }
+  }
 
 /// Problem 4: School Schedule Organizer
 /**
@@ -51,9 +71,31 @@ function logGridCoordinates(matrix) {
  */
 
 function organizeSchedule(schedule) {
-  // Function implementation.
+  const organizedSchedule = {};
+
+  for (let dayIndex = 0; dayIndex < schedule.length; dayIndex++) {
+    const dayName = getDayName(dayIndex);
+    const formattedClasses = [];
+
+    for (let classIndex = 0; classIndex < schedule[dayIndex].length; classIndex++) {
+      const classDetails = schedule[dayIndex][classIndex];
+      formattedClasses.push(formatClassDetails(classDetails));
+    }
+
+    organizedSchedule[dayName] = formattedClasses;
+  }
+
+  return organizedSchedule;
 }
 
+function getDayName(dayIndex) {
+  const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  return daysOfWeek[dayIndex] || `Day ${dayIndex + 1}`;
+}
+
+function formatClassDetails(classDetails) {
+  return `${classDetails.subject} with ${classDetails.teacher}`;
+}
 
 /// Problem 5: Grid Function Calculator (Challenging)
 /**
@@ -64,9 +106,7 @@ function organizeSchedule(schedule) {
  */
 
 function calculateGridFunctions(grid) {
-  // Function implementation.
 }
-
 
 
 module.exports = {
