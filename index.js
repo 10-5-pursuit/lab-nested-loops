@@ -8,9 +8,24 @@
  * countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
  */
 function countZeroes(matrix) {
+  let num = 0;
+  for (let i=0; i<matrix.length; i++){
+    let arr = matrix[i];
+    for (let j=0; j<arr.length; j++){
+      if (arr[j] === 0){
+        num++;
+      }
+    }
+    
+  }
+  return num;
   // Function implementation.
 }
 
+// return matrix.reduce((count, arr) => {
+//   count += arr.filter(num => num == 0).length;
+//   return count;
+// },0);
 
 /// Problem 2: Search for an Element
 /**
