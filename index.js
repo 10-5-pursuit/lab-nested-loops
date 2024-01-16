@@ -9,6 +9,11 @@
  */
 function countZeroes(matrix) {
   // Function implementation.
+  let count  = 0;
+  for (let i = 0; i < matrix.length; i++)
+    for (let j = 0; j < matrix[i].length; j++)
+      if (matrix[i][j] == 0) count ++;
+  return count;
 }
 
 
@@ -24,6 +29,11 @@ function countZeroes(matrix) {
  */
 function findElement(matrix, element) {
   // Function implementation.
+  for (let row = 0; row < matrix.length; row++)
+    for (let column = 0; column < matrix[row].length; column++)
+      if (matrix[row][column] == element)
+        return `Element found at row ${row}, column ${column}`;
+  return 'Element not found';
 }
 
 
@@ -39,6 +49,9 @@ function findElement(matrix, element) {
 
 function logGridCoordinates(matrix) {
   // Function implementation.
+  for (let row = 0; row < matrix.length; row++)
+  for (let column = 0; column < matrix[row].length; column++)
+    console.log(`Element at row ${row}, column ${column} is ${matrix[row][column]}`);
 }
 
 
@@ -52,6 +65,40 @@ function logGridCoordinates(matrix) {
 
 function organizeSchedule(schedule) {
   // Function implementation.
+  let organized = {};
+  let classStatement = "";
+  for (let day = 0; day < schedule.length; day++)
+    for (let time = 0; time < schedule[day].length; time++){
+      classStatement = `${schedule[day][time].subject} with ${schedule[day][time].teacher}`;
+      switch(day) {
+        case (0):
+          if (!organized.Monday)
+            organized.Monday = [];
+          organized.Monday.push(classStatement);
+          break;
+        case (1):
+          if (!organized.Tuesday)
+            organized.Tuesday = [];
+          organized.Tuesday.push(classStatement);
+          break;
+        case (2):
+          if (!organized.Wednesday)
+            organized.Wednesday = [];
+          organized.Wednesday.push(classStatement);
+          break;
+        case (3):
+          if (!organized.Thursday)
+            organized.Thursday = [];
+          organized.Thursday.push(classStatement);
+          break;
+        case (4):
+          if (!organized.Friday)
+            organized.Friday = [];
+          organized.Friday.push(classStatement);
+          break;
+      }
+    }
+  return(organized);
 }
 
 
@@ -65,8 +112,16 @@ function organizeSchedule(schedule) {
 
 function calculateGridFunctions(grid) {
   // Function implementation.
+  let grandTotal = 0;
+  for (let i = 0; i < grid.length; i++)
+    for (let j = 0; j < grid[i].length; j++){
+      let functionAndParams = grid[i][j];
+      for (key in functionAndParams)
+        if (key != "params") 
+          grandTotal += functionAndParams[key](...functionAndParams.params);
+    }
+  return grandTotal;
 }
-
 
 
 module.exports = {
