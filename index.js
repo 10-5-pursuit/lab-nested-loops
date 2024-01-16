@@ -60,11 +60,18 @@ console.log(findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5))
  * // logs: 'Element at row 0, column 0 is 1', 'Element at row 0, column 1 is 2', ...
  * logGridCoordinates([[1, 2], [3, 4]])
  */
+// 'Element at row 0, column 0 is 1');
 
 function logGridCoordinates(matrix) {
-  // Function implementation.
+  for (let i = 0; i < matrix.length; i++) {
+    let arr = matrix[i]
+    for (let j = 0; j < arr.length; j++) {
+console.log(`Element at row ${i}, column ${j} is ${arr[j]}`)
+    }
+  }
 }
 
+console.log(logGridCoordinates([[1, 2], [3, 4]]))
 
 /// Problem 4: School Schedule Organizer
 /**
