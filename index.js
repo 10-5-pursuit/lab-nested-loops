@@ -65,7 +65,44 @@ function logGridCoordinates(matrix) {
 
 function organizeSchedule(schedule) {
   // Function implementation.
+  let organized = {};
+  let classStatement = "";
+  for (let day = 0; day < schedule.length; day++)
+    for (let time = 0; time < schedule[day].length; time++){
+      classStatement = `${schedule[day][time].subject} with ${schedule[day][time].teacher}`;
+      switch(day) {
+        case (0):
+          if (!organized.Monday)
+            organized.Monday = [];
+          organized.Monday.push(classStatement);
+          break;
+        case (1):
+          if (!organized.Tuesday)
+            organized.Tuesday = [];
+          organized.Tuesday.push(classStatement);
+          break;
+        case (2):
+          if (!organized.Wednesday)
+            organized.Wednesday = [];
+          organized.Wednesday.push(classStatement);
+          break;
+        case (3):
+          if (!organized.Thursday)
+            organized.Thursday = [];
+          organized.Thursday.push(classStatement);
+          break;
+        case (4):
+          if (!organized.Friday)
+            organized.Friday = [];
+          organized.Friday.push(classStatement);
+          break;
+      }
+    }
+  return(organized);
 }
+
+const exampleSongData = require("./data/schedule");
+organizeSchedule(exampleSongData);
 
 
 /// Problem 5: Grid Function Calculator (Challenging)
