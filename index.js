@@ -9,7 +9,19 @@
  */
 function countZeroes(matrix) {
   // Function implementation.
+  let count = 0;
+  for(const element1 of matrix) {
+    let arrSplit = element1;
+    for(const element2 of arrSplit) {
+      if(element2 === 0) {
+        count++;
+      }
+    }
+  }
+  return count;
 }
+
+countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
 
 
 /// Problem 2: Search for an Element
@@ -24,7 +36,18 @@ function countZeroes(matrix) {
  */
 function findElement(matrix, element) {
   // Function implementation.
+  for(const index in matrix) {
+    let arrOf2D = matrix[index];
+    for(const index2 in arrOf2D) {
+      if(arrOf2D[index2] === element){
+        return `Element found at row ${index}, column ${index2}`
+      }
+    }
+  }
+  return `Element not found`
 }
+
+// findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5);
 
 
 /// Problem 3: Grid Coordinate Logger
@@ -39,7 +62,15 @@ function findElement(matrix, element) {
 
 function logGridCoordinates(matrix) {
   // Function implementation.
+  for(const index in matrix) {
+    let arrOf2D = matrix[index];
+    for(const index2 in arrOf2D) {
+      console.log(`Element at row ${index}, column ${index2} is ${arrOf2D[index2]}`)
+    }
+  }
 }
+
+// logGridCoordinates([[1, 2], [3, 4]])
 
 
 /// Problem 4: School Schedule Organizer
@@ -50,10 +81,26 @@ function logGridCoordinates(matrix) {
  * @example See tests in Jests in index.test.js for examples.
  */
 
+const testSchedule = require('../Lab-Nested-Loops/data/schedule.js');
+
 function organizeSchedule(schedule) {
   // Function implementation.
+  let organizedSchedule = {};
+
+      for(const i in schedule) { 
+        let currDay = [];
+        let daysArr = ['Monday','Tuesday','Wednesday','Thursday','Friday']
+        let day = schedule[i];
+          for(const j in day) {
+            currDay.push(`${day[j].subject} with ${day[j].teacher}`)     
+        }
+        organizedSchedule[daysArr[i]] = currDay
+      }
+      
+  return organizedSchedule
 }
 
+organizeSchedule(testSchedule)
 
 /// Problem 5: Grid Function Calculator (Challenging)
 /**
@@ -62,11 +109,34 @@ function organizeSchedule(schedule) {
  * @returns {number} - The sum of the results of all functions in the grid.
  * @example See tests in Jests in index.test.js for examples.
  */
+const data = require('../Lab-Nested-Loops/data/gridCalc.js');
 
 function calculateGridFunctions(grid) {
   // Function implementation.
+  let sum = 0;
+
+    for(const i in grid) {
+      let arr = grid[i];
+        for(const j in arr) {
+          let obj = arr[j];
+          let currFunction;
+          let params = [];
+            for(const key in obj) {
+              if(typeof obj[key] === 'function') {
+                currFunction = obj[key];
+              }
+              else {
+                params = obj[key];
+              }
+            }
+            sum += currFunction(...params);
+      }
+    }
+
+  return sum;
 }
 
+console.log(calculateGridFunctions(data))
 
 
 module.exports = {
