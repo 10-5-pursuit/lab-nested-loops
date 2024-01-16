@@ -19,7 +19,6 @@ function countZeroes(matrix) {
     
   }
   return num;
-  // Function implementation.
 }
 
 // return matrix.reduce((count, arr) => {
@@ -35,12 +34,32 @@ function countZeroes(matrix) {
  * @returns {string} - The position of the element or 'Element not found'.
  * @example
  * // returns 'Element found at row 1, column 1'
- * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
+ * findElement([[1, 2, 3], 
+ *              [4, 5, 6], 
+ *              [7, 8, 9]], 5)
  */
 function findElement(matrix, element) {
-  // Function implementation.
-}
+  let coord = [undefined, undefined];
+  for (let i=0; i<matrix.length; i++){
+    let arr = matrix[i];
+    if (arr.length == undefined){
+      if (arr === element){
+        coord[0] = matrix.indexOf(arr);
+        coord[1] = 1;
+      }
+    } else {
+      for (let k=0; k<arr.length; k++){
+        if (arr[k] === element){
+          coord[0] = matrix.indexOf(arr);
+          coord[1] = arr.indexOf(arr[k]);
+        }
 
+    }
+  }
+  
+}
+return coord[0] == undefined ?  "Element not found" : `Element found at row ${coord[0]}, column ${coord[1]}`;
+}
 
 /// Problem 3: Grid Coordinate Logger
 
