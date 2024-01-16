@@ -12,22 +12,26 @@ const schedule = require("./data/schedule")
  * countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
  */
 function countZeroes(matrix) {
-  let count = 0;
-  matrix.forEach(arr => arr.forEach(num => num === 0 ? count++ : num))
-  return count
+  let countOfZeros = 0;
+  for(let i = 0; i < matrix.length; i++) {
+    let arr = matrix[i];
+    for(let j = 0; j < arr.length; j++) {
+      if(arr[j] === 0){
+        countOfZeros++
+      }
+    }
+  }
+  return countOfZeros
 }
-// let countOfZeros = 0;
-// for(let i = 0; i < matrix.length; i++) {
-//   let arr = matrix[i];
-//   for(let j = 0; j < arr.length; j++) {
-//     if(arr[j] === 0){
-//       countOfZeros++
-//     }
-//   }
-// }
-// return countOfZeros
+// let count = 0;
+// matrix.forEach(arr => arr.forEach(num => num === 0 ? count++ : num))
+// return count
 
-console.log(countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]]))
+console.log(countZeroes([
+  [1, 0, 3], 
+  [4, 5, 6], 
+  [7, 8, 9]
+]))
 
 /// Problem 2: Search for an Element
 /**
@@ -52,7 +56,7 @@ function findElement(matrix, element) {
   return 'Element not found'
 }
 
-// console.log(findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5))
+console.log(findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 1))
 
 /// Problem 3: Grid Coordinate Logger
 
@@ -77,7 +81,6 @@ function logGridCoordinates(matrix) {
   }
 }
 
-
 /// Problem 4: School Schedule Organizer
 /**
  * Organizes a weekly class schedule into a structured format. You will need to import the schedule from data/schedule.js.
@@ -85,12 +88,28 @@ function logGridCoordinates(matrix) {
  * @returns {Object} - An object with organized schedule.
  * @example See tests in Jests in index.test.js for examples.
  */
+// {
+//   "Monday": ["Math with Mr. Smith"],
+//   "Tuesday": ["Science with Mr. Brown", "English with Ms. Davis", "Art with Ms. Lively"]
+// }
 
 function organizeSchedule(schedule) {
-  // Function implementation.
+  const schoolDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  let organizedObject = {};
+  for(let i = 0; i < schedule.length; i++) {
+    let arr = schedule[i];
+    let array = [];
+    for(let j = 0; j < arr.length; j++) {
+      array.push(`${arr[j].subject} with ${arr[j].teacher}`)
+      if(!organizedObject[schoolDays[i]]) {
+        organizedObject[schoolDays[i]] = array;
+      }
+    }
+  }
+  return organizedObject;
 }
 
-
+console.log(organizeSchedule(schedule))
 /// Problem 5: Grid Function Calculator (Challenging)
 /**
  * Calculates the sum of results from a grid of functions. You will need to import the grid from data/gridCalc.js.
@@ -100,7 +119,7 @@ function organizeSchedule(schedule) {
  */
 
 function calculateGridFunctions(grid) {
-  // Function implementation.
+
 }
 
 
