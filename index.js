@@ -7,9 +7,22 @@
  * // returns 2
  * countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
  */
+let matrix = [[1, 0, 3], [4, 5, 0], [7, 8, 9]];
 function countZeroes(matrix) {
-  // Function implementation.
-}
+  let count = 0;
+  for (let i = 0; i < matrix.length; i++){
+   for (let x = 0; x < matrix[i].length; x++){
+      // console.log(matrix[i][x])
+     if (matrix[i][x] === 0){
+     count += 1
+     }
+    }
+  }
+    return count 
+  }
+  
+  console.log(countZeroes(matrix))
+
 
 
 /// Problem 2: Search for an Element
@@ -23,9 +36,16 @@ function countZeroes(matrix) {
  * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
  */
 function findElement(matrix, element) {
-  // Function implementation.
+  for (let i = 0; i < matrix.length; i++)
+    for (let w = 0; w < matrix[i].length; w++){
+  if (matrix[i][w] === element){
+      return `Element found at row ${i}, column ${w}`
+  }
+}
+  return "Element not found"
 }
 
+console.log(findElement(matrix, 9))
 
 /// Problem 3: Grid Coordinate Logger
 
@@ -36,11 +56,13 @@ function findElement(matrix, element) {
  * // logs: 'Element at row 0, column 0 is 1', 'Element at row 0, column 1 is 2', ...
  * logGridCoordinates([[1, 2], [3, 4]])
  */
-
 function logGridCoordinates(matrix) {
-  // Function implementation.
+  for (let i = 0; i < matrix.length; i++)
+    for (let x = 0; x < matrix[i].length; x++){
+      console.log(`Element at row ${[i]}, column ${x} is ${matrix[i][x]}` )
+    }
 }
-
+logGridCoordinates(matrix)
 
 /// Problem 4: School Schedule Organizer
 /**
@@ -51,8 +73,41 @@ function logGridCoordinates(matrix) {
  */
 
 function organizeSchedule(schedule) {
-  // Function implementation.
+  let scheduleObj = {};
+for (let i = 0; i < schedule.length; i++) {
+  for (let x = 0; x < schedule[i].length; x++) {
+  if (i === 0) {
+    if (!scheduleObj.Monday)
+      scheduleObj.Monday = []
+    scheduleObj.Monday.push(`${schedule[i][x].subject} with ${schedule[i][x].teacher}`)
+    
+  }
+    if (i === 1) {
+    if (!scheduleObj.Tuesday)
+      scheduleObj.Tuesday = []
+    scheduleObj.Tuesday.push(`${schedule[i][x].subject} with ${schedule[i][x].teacher}`)
+  }
+    if (i === 2) {
+    if (!scheduleObj.Wednesday)
+      scheduleObj.Wednesday = []
+    scheduleObj.Wednesday.push(`${schedule[i][x].subject} with ${schedule[i][x].teacher}`)
+  }
+    
+    if (i === 2) {
+    if (!scheduleObj.Thursday)
+      scheduleObj.Thursday = []
+    scheduleObj.Thursday.push(`${schedule[i][x].subject} with ${schedule[i][x].teacher}`)
+  }
+    if (i === 2) {
+    if (!scheduleObj.Friday)
+      scheduleObj.Friday = []
+    scheduleObj.Friday.push(`${schedule[i][x].subject} with ${schedule[i][x].teacher}`)
 }
+}
+ }
+   return scheduleObj;
+}
+
 
 
 /// Problem 5: Grid Function Calculator (Challenging)
@@ -63,9 +118,19 @@ function organizeSchedule(schedule) {
  * @example See tests in Jests in index.test.js for examples.
  */
 
-function calculateGridFunctions(grid) {
-  // Function implementation.
-}
+  function calculateGridFunctions(grid) {
+    let total = 0
+    for (let i = 0; i < grid.length; i++){
+      for (let x = 0; x < grid[i].length; x++){
+        for (let key in grid[i][x]){
+          if (key!== "params")
+            total += grid[i][x][key](...grid[i][x].params)
+        }
+      }
+    }
+    return total
+  }
+
 
 
 
