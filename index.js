@@ -28,10 +28,17 @@ return count;
  * // returns 'Element found at row 1, column 1'
  * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
  */
-function findElement(matrix, element) {
-  // Function implementation.
-}
 
+function findElement(matrix, element) {
+  for (let i = 0; i < matrix.length; i++) {
+    for (let r = 0; r < matrix[i].length; r++) {
+      if (matrix[i][r] === element) {
+        return `Element found at row ${i}, column ${r}`;
+      }
+    }
+  }
+  return `Element not found`;
+}
 
 /// Problem 3: Grid Coordinate Logger
 
