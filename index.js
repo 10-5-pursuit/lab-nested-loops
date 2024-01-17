@@ -8,7 +8,18 @@
  * countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
  */
 function countZeroes(matrix) {
-  // Function implementation.
+  let zeroCount = 0
+  for (let i = 0; i < matrix.length;i++){
+    let twoDArr = matrix[i]
+  
+    for (let j = 0; j < twoDArr.length;j++){
+      if(twoDArr[j] === 0){
+        zeroCount++
+      }
+    }
+  }
+  return zeroCount
+  
 }
 
 
@@ -23,7 +34,15 @@ function countZeroes(matrix) {
  * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
  */
 function findElement(matrix, element) {
-  // Function implementation.
+  for (let i = 0; i < matrix.length; i++) {
+    
+    for (let j = 0; j < matrix[i].length; j++) { //the subscript needed for finding the element is [i][j]
+      if (matrix[i][j] === element) {
+        return `Element found at row ${i}, column ${j}`;
+      }
+    }
+  }
+  return 'Element not found';
 }
 
 
@@ -34,11 +53,18 @@ function findElement(matrix, element) {
  * @param {any[][]} matrix - A 2D array.
  * @example
  * // logs: 'Element at row 0, column 0 is 1', 'Element at row 0, column 1 is 2', ...
- * logGridCoordinates([[1, 2], [3, 4]])
+                  //     0       1
+                  //   0  1    0  1
+* logGridCoordinates([[1, 2], [3, 4]])
  */
 
 function logGridCoordinates(matrix) {
-  // Function implementation.
+  for(let i = 0; i < matrix.length; i++){
+    for (let j = 0; j < matrix[i].length; j++){
+      console.log(`Element at row ${i}, column ${j} is ${matrix[i][j]}`); // remember that in order to log actual element the subscript has to be [i][j] if not delcared in variables
+    }
+  }
+
 }
 
 
