@@ -27,11 +27,11 @@ function countZeroes(matrix) {
 // matrix.forEach(arr => arr.forEach(num => num === 0 ? count++ : num))
 // return count
 
-console.log(countZeroes([
-  [1, 0, 3], 
-  [4, 5, 6], 
-  [7, 8, 9]
-]))
+// console.log(countZeroes([
+//   [1, 0, 3], 
+//   [4, 5, 6], 
+//   [7, 8, 9]
+// ]))
 
 /// Problem 2: Search for an Element
 /**
@@ -56,7 +56,7 @@ function findElement(matrix, element) {
   return 'Element not found'
 }
 
-console.log(findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 1))
+// console.log(findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 1))
 
 /// Problem 3: Grid Coordinate Logger
 
@@ -109,7 +109,7 @@ function organizeSchedule(schedule) {
   return organizedObject;
 }
 
-console.log(organizeSchedule(schedule))
+// console.log(organizeSchedule(schedule))
 /// Problem 5: Grid Function Calculator (Challenging)
 /**
  * Calculates the sum of results from a grid of functions. You will need to import the grid from data/gridCalc.js.
@@ -119,8 +119,20 @@ console.log(organizeSchedule(schedule))
  */
 
 function calculateGridFunctions(grid) {
-  
+  let sum = 0
+  for(let i = 0; i < grid.length; i++) {
+    let arr = grid[i];
+    for(let j = 0; j < arr.length; j++) {
+      let array = Object.values(arr[j])
+      let func = array[0]; // function : (x, y) => x + y
+      sum += func(...array[1]) // function add(index1,index2)
+    }
+  }
+  return sum
 }
+
+console.log(calculateGridFunctions(grid))
+
 
 
 
