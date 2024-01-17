@@ -119,7 +119,7 @@ console.log(organizeSchedule(schedule))
  */
 
 function calculateGridFunctions(grid) {
-
+  
 }
 
 
