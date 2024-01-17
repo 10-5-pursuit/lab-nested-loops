@@ -90,7 +90,7 @@ function organizeSchedule(schedule) {
   return organizedSchedule; 
 }
 
-//test
+//testing
 
 /// Problem 5: Grid Function Calculator (Challenging)
 /**
