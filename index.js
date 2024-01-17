@@ -1,3 +1,6 @@
+const exampleGridCalcData = require("./data/gridCalc")
+const exampleScheduleData = require("./data/schedule")
+
 /// Problem 1: Count Zeroes
 /**
  * Counts the number of zeroes in a 2D array.
@@ -8,9 +11,21 @@
  * countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
  */
 function countZeroes(matrix) {
-  // Function implementation.
+  let zeroCount = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    let arr = matrix[i]
+    for (let j = 0; j < arr.length; j++) {
+    if (arr[j] === 0) {
+      zeroCount++
+      }
+   }
+  }
+return zeroCount
 }
+countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
 
+// matrix.forEach(arr => arr.forEach(num => num === 0 ? count++ : num))
+// return count
 
 /// Problem 2: Search for an Element
 /**
@@ -23,9 +38,18 @@ function countZeroes(matrix) {
  * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
  */
 function findElement(matrix, element) {
-  // Function implementation.
+  for (let i = 0; i < matrix.length; i++) {
+  let arr = matrix[i]
+  for (let j = 0; j < arr.length; j++) {
+    if(arr[j] === element) {
+      return `Element found at row ${i}, column ${j}`
+    }  
+ }
+}
+return "Element not found"
 }
 
+console.log(findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5))
 
 /// Problem 3: Grid Coordinate Logger
 
@@ -36,11 +60,18 @@ function findElement(matrix, element) {
  * // logs: 'Element at row 0, column 0 is 1', 'Element at row 0, column 1 is 2', ...
  * logGridCoordinates([[1, 2], [3, 4]])
  */
+// 'Element at row 0, column 0 is 1');
 
 function logGridCoordinates(matrix) {
-  // Function implementation.
+  for (let i = 0; i < matrix.length; i++) {
+    let arr = matrix[i]
+    for (let j = 0; j < arr.length; j++) {
+console.log(`Element at row ${i}, column ${j} is ${arr[j]}`)
+    }
+  }
 }
 
+console.log(logGridCoordinates([[1, 2], [3, 4]]))
 
 /// Problem 4: School Schedule Organizer
 /**
@@ -51,7 +82,19 @@ function logGridCoordinates(matrix) {
  */
 
 function organizeSchedule(schedule) {
-  // Function implementation.
+  const schoolDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  let object = {};
+  for(let i = 0; i < schedule.length; i++) {
+    let arr = schedule[i];
+    let array = []
+    for(let j = 0; j < arr.length; j++) {
+      array.push(`${arr[j].subject} with ${arr[j].teacher}`)
+      if(!object[schoolDays[i]]) {
+        object[schoolDays[i]] = array
+      }
+    }
+  }
+  return object
 }
 
 
@@ -64,9 +107,18 @@ function organizeSchedule(schedule) {
  */
 
 function calculateGridFunctions(grid) {
-  // Function implementation.
+let result = 0;
+for(let i = 0; i < grid.length; i++) {
+  let arr = grid[i];
+  for(let j = 0; j < arr.length; j++) {
+    let array = Object.values(arr[j]);
+    let func = array[0];
+    result += func(array[1][0], array[1][1], array[1][2])
+    // func(...array[1])
+  }
 }
-
+return result
+}
 
 
 module.exports = {
