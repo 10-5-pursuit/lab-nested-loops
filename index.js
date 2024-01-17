@@ -67,9 +67,18 @@ function logGridCoordinates(matrix) {
  */
 
 function organizeSchedule(schedule) {
-  // Function implementation.
-}
+  const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  const organizedSchedule = {};
 
+  schedule.forEach((day, index) => {
+    if (index < daysOfWeek.length) {
+      const dayName = daysOfWeek[index];
+      organizedSchedule[dayName] = day.map(display => `${display.subject} with ${display.teacher}`)
+    }
+  });
+
+  return organizedSchedule;
+}
 
 /// Problem 5: Grid Function Calculator (Challenging)
 /**
@@ -80,10 +89,16 @@ function organizeSchedule(schedule) {
  */
 
 function calculateGridFunctions(grid) {
-  // Function implementation.
+  let sum = 0;
+
+  grid.forEach(row =>  { 
+    row.forEach(cell => {
+      const funcName = Object.keys(cell)[0];
+      sum += cell[funcName](...cell.params);
+    });
+  });
+  return sum;
 }
-
-
 
 module.exports = {
     countZeroes,
