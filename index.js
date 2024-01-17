@@ -36,7 +36,7 @@ function countZeroes(matrix) {
 function findElement(matrix, element) {
   for (let i = 0; i < matrix.length; i++) {
     
-    for (let j = 0; j < matrix[i].length; j++) {
+    for (let j = 0; j < matrix[i].length; j++) { //the subscript needed for finding the element is [i][j]
       if (matrix[i][j] === element) {
         return `Element found at row ${i}, column ${j}`;
       }
