@@ -132,6 +132,7 @@ function calculateGridFunctions(grid) {
     return sum
   },0) 
 }
+
 // let sum = 0
 // for(let i = 0; i < grid.length; i++) {
 //   let arr = grid[i];
