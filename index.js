@@ -8,8 +8,17 @@
  * countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
  */
 function countZeroes(matrix) {
-  // Function implementation.
+  let sum = 0;
+  for (let i = 0; i < matrix.length; i++) { //  outer loop
+    for (let j = 0; j < matrix[i].length; j++) { // inner loop
+      if (matrix[i][j] === 0) { // Condition check has both i and j.  i is the outer.  j is inner
+        sum++;
+      }
+    }
+  }
+  return sum;
 }
+console.log(countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]]))
 
 
 /// Problem 2: Search for an Element
@@ -23,8 +32,18 @@ function countZeroes(matrix) {
  * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
  */
 function findElement(matrix, element) {
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++){
+      if (matrix[i][j] === element) {
+        return `Element found at row ${i}, column ${j}`
+      }
+    }
+  }
+  return 'Element not found';
   // Function implementation.
+
 }
+findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
 
 
 /// Problem 3: Grid Coordinate Logger
@@ -39,8 +58,17 @@ function findElement(matrix, element) {
 
 function logGridCoordinates(matrix) {
   // Function implementation.
+  for (let i = 0; i <matrix.length; i++){
+
+    for (let j = 0; j <matrix[i].length; j++) {
+
+      console.log(`Element at row ${i}, column ${j} is ${matrix[i][j]}`);
+    }
+  }
+
 }
 
+console.log(logGridCoordinates([[1, 2], [3, 4]]))
 
 /// Problem 4: School Schedule Organizer
 /**
@@ -49,11 +77,20 @@ function logGridCoordinates(matrix) {
  * @returns {Object} - An object with organized schedule.
  * @example See tests in Jests in index.test.js for examples.
  */
-
 function organizeSchedule(schedule) {
-  // Function implementation.
+  const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+  const organizedSchedule = {};
+  schedule.forEach((day, index) => {
+    if (index < daysOfWeek.length) {
+      const dayName = daysOfWeek[index];
+      // Notice the backticks used below for proper string interpolation
+      organizedSchedule[dayName] = day.map(display => `${display.subject} with ${display.teacher}`);
+    }
+  });
+  return organizedSchedule; 
 }
 
+//testing
 
 /// Problem 5: Grid Function Calculator (Challenging)
 /**
