@@ -82,7 +82,19 @@ console.log(logGridCoordinates([[1, 2], [3, 4]]))
  */
 
 function organizeSchedule(schedule) {
-  // Function implementation.
+  const schoolDays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
+  let object = {};
+  for(let i = 0; i < schedule.length; i++) {
+    let arr = schedule[i];
+    let array = []
+    for(let j = 0; j < arr.length; j++) {
+      array.push(`${arr[j].subject} with ${arr[j].teacher}`)
+      if(!object[schoolDays[i]]) {
+        object[schoolDays[i]] = array
+      }
+    }
+  }
+  return object
 }
 
 
@@ -95,7 +107,7 @@ function organizeSchedule(schedule) {
  */
 
 function calculateGridFunctions(grid) {
-  // Function implementation.
+
 }
 
 
