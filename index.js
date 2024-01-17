@@ -107,9 +107,9 @@ function organizeSchedule(schedule) {
 // for(let i = 0; i < schedule.length; i++) {
 //   let arr = schedule[i];
 //   let array = [];
+//   organizedObject[schoolDays[i]] = array;
 //   for(let j = 0; j < arr.length; j++) {
 //     array.push(`${arr[j].subject} with ${arr[j].teacher}`)
-//     organizedObject[schoolDays[i]] = array;
 //   }
 // }
 // return organizedObject;
