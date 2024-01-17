@@ -8,8 +8,19 @@
  * countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
  */
 function countZeroes(matrix) {
-  // Function implementation.
+  let counter = 0;
+for(let i = 0; i < matrix.length; i++){
+  let arr = matrix[i]
+  for(let j = 0; j < arr.length; j++){
+    if(arr[j] == 0){
+    counter++;
+    }
+  }
+
 }
+return counter;
+}
+console.log(countZeroes([[1, 0, 3], [2, 5, 0], [7, 8, 9]]))
 
 
 /// Problem 2: Search for an Element
@@ -23,8 +34,24 @@ function countZeroes(matrix) {
  * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
  */
 function findElement(matrix, element) {
-  // Function implementation.
+  let foundElement = [];
+
+  for(let i = 0; i < matrix.length; i++){
+    let arr = matrix[i]
+    for(let j= 0; j < arr.length; j++){
+      if(arr[j] == element){
+    return `Element found at row ${i}, column ${j}`
+      }
+      }
+    }
+  return `Element not found`
 }
+
+
+
+
+
+console.log(findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5))
 
 
 /// Problem 3: Grid Coordinate Logger
@@ -38,8 +65,14 @@ function findElement(matrix, element) {
  */
 
 function logGridCoordinates(matrix) {
-  // Function implementation.
+  for(let i = 0; i < matrix.length; i++){
+    let arr = matrix[i];
+    for(let j = 0; j < arr.length; j++){
+      console.log(`Element at row ${i}, colummn ${j} is ${arr[j]}`)
+    }
+  }
 }
+console.log([[1, 2], [3, 4]])
 
 
 /// Problem 4: School Schedule Organizer
@@ -50,9 +83,47 @@ function logGridCoordinates(matrix) {
  * @example See tests in Jests in index.test.js for examples.
  */
 
-function organizeSchedule(schedule) {
-  // Function implementation.
-}
+
+const scheduleData = require("./data/schedule")
+
+function organizeSchedule(scheduleArr) {
+  let organizedSchedule = {
+   'Monday': [],
+   'Tuesday': [],
+   'Wednesday': [],
+   'Thursday': [],
+   'Friday': [],
+  }
+
+  for(let i = 0; i < scheduleArr.length ; i++){
+    let dayOfTheWeek = scheduleArr[i];
+    for(let j = 0; j < dayOfTheWeek.length; j++){
+      if(i === 0) {
+        organizedSchedule.Monday.push(`${dayOfTheWeek[j].subject} with ${dayOfTheWeek[j].teacher}`)
+      }
+      if(i === 1) {
+        organizedSchedule.Tuesday.push(`${dayOfTheWeek[j].subject} with ${dayOfTheWeek[j].teacher}`)
+      }
+      if(i === 2) {
+        organizedSchedule.Wednesday.push(`${dayOfTheWeek[j].subject} with ${dayOfTheWeek[j].teacher}`)
+      }
+      if(i === 3) {
+        organizedSchedule.Thursday.push(`${dayOfTheWeek[j].subject} with ${dayOfTheWeek[j].teacher}`)
+      }
+      if(i === 4) {
+        organizedSchedule.Friday.push(`${dayOfTheWeek[j].subject} with ${dayOfTheWeek[j].teacher}`)
+      }
+    }
+    
+  }
+  return organizedSchedule;
+}   
+  
+  
+  console.log(organizeSchedule(scheduleData))
+  
+  
+
 
 
 /// Problem 5: Grid Function Calculator (Challenging)
