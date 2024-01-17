@@ -1,3 +1,7 @@
+const grid = require("./data/gridCalc");
+const schedule = require("./data/schedule");
+// console.log(grid)
+// console.log(schedule)
 /// Problem 1: Count Zeroes
 /**
  * Counts the number of zeroes in a 2D array.
@@ -8,9 +12,20 @@
  * countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
  */
 function countZeroes(matrix) {
-  // Function implementation.
-}
+let count = 0;
 
+   for (let i= 0; i < matrix.length; i++) {
+    let arr = matrix[i]
+
+    for (let j= 0; j < arr.length; j++) {
+      if (arr[j] === 0) {
+        count++;
+      }
+    }
+  }
+  return count; 
+}
+// console.log(countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]]))
 
 /// Problem 2: Search for an Element
 /**
@@ -23,9 +38,9 @@ function countZeroes(matrix) {
  * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
  */
 function findElement(matrix, element) {
-  // Function implementation.
-}
 
+
+}
 
 /// Problem 3: Grid Coordinate Logger
 
@@ -38,7 +53,8 @@ function findElement(matrix, element) {
  */
 
 function logGridCoordinates(matrix) {
-  // Function implementation.
+
+
 }
 
 
