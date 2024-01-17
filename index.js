@@ -8,6 +8,17 @@
  * countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
  */
 function countZeroes(matrix) {
+  let zeroCount = 0
+  for (let i = 0; i < matrix.length;i++){
+    let twoDArr = matrix[i]
+  
+    for (let j = 0; j < twoDArr.length;i++){
+      if(twoDArr[j] === 0){
+        zeroCount++
+      }
+    }
+  }
+  return zeroCount
   // Function implementation.
 }
 
