@@ -104,7 +104,16 @@ console.log(organizeSchedule(schedule))
  */
 
 function calculateGridFunctions(grid) {
-  
+  let results = 0;
+  for(let i = 0; i < grid.length; i++) { 
+    let newArr = grid[i];
+    for(let j = 0; j < newArr.length; j++) {
+      let accessArray = Object.values(newArr[j])
+      results += accessArray[0](...accessArray[1])
+    }
+  }
+
+  return results;
 }
 
 
