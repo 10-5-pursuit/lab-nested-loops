@@ -1,3 +1,7 @@
+const grid = require("./data/gridCalc");
+const schedule = require("./data/schedule");
+// console.log(grid)
+// console.log(schedule)
 /// Problem 1: Count Zeroes
 /**
  * Counts the number of zeroes in a 2D array.
@@ -8,9 +12,20 @@
  * countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
  */
 function countZeroes(matrix) {
-  // Function implementation.
-}
+let count = 0;
 
+   for (let i= 0; i < matrix.length; i++) {
+    let arr = matrix[i]
+
+    for (let j= 0; j < arr.length; j++) {
+      if (arr[j] === 0) {
+        count++;
+      }
+    }
+  }
+  return count; 
+}
+// console.log(countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]]))
 
 /// Problem 2: Search for an Element
 /**
@@ -23,9 +38,17 @@ function countZeroes(matrix) {
  * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
  */
 function findElement(matrix, element) {
-  // Function implementation.
-}
 
+  for(let i = 0; i < matrix.length; i++) { 
+    let newArr = matrix[i];
+    for(let j = 0; j < newArr.length; j++) {
+      if( newArr[j] === element){
+        return `Element found at row ${i}, column ${j}`
+      }
+    }
+  }
+  return 'Element not found'
+}
 
 /// Problem 3: Grid Coordinate Logger
 
@@ -38,7 +61,14 @@ function findElement(matrix, element) {
  */
 
 function logGridCoordinates(matrix) {
-  // Function implementation.
+  for(let i = 0; i < matrix.length; i++) { 
+    let newArr = matrix[i];
+    for(let j = 0; j < newArr.length; j++) {
+
+      console.log(`Element at row ${i}, column ${j} is ${newArr[j]}`)
+    }
+  }
+
 }
 
 
@@ -51,9 +81,19 @@ function logGridCoordinates(matrix) {
  */
 
 function organizeSchedule(schedule) {
-  // Function implementation.
+  let organizedSchedule = {};
+  let weekdays = ['Monday','Tuesday','Wednesday', 'Thursday','Friday']
+    for(let i = 0; i < schedule.length; i++) { 
+    let newArr = schedule[i]
+    let scheduleArray = []
+    for(let j = 0; j < newArr.length; j++) {
+      scheduleArray.push(`${newArr[j].subject} with ${newArr[j].teacher}`)
+   organizedSchedule[weekdays[i]] = scheduleArray;
+    }
+  }
+  return organizedSchedule;
 }
-
+console.log(organizeSchedule(schedule))
 
 /// Problem 5: Grid Function Calculator (Challenging)
 /**
@@ -64,7 +104,16 @@ function organizeSchedule(schedule) {
  */
 
 function calculateGridFunctions(grid) {
-  // Function implementation.
+  let results = 0;
+  for(let i = 0; i < grid.length; i++) { 
+    let newArr = grid[i];
+    for(let j = 0; j < newArr.length; j++) {
+      let accessArray = Object.values(newArr[j])
+      results += accessArray[0](...accessArray[1])
+    }
+  }
+
+  return results;
 }
 
 
