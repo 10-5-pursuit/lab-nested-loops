@@ -8,9 +8,23 @@
  * countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
  */
 function countZeroes(matrix) {
-  // Function implementation.
+  let num = 0;
+  for (let i=0; i<matrix.length; i++){
+    let arr = matrix[i];
+    for (let j=0; j<arr.length; j++){
+      if (arr[j] === 0){
+        num++;
+      }
+    }
+    
+  }
+  return num;
 }
 
+// return matrix.reduce((count, arr) => {
+//   count += arr.filter(num => num == 0).length;
+//   return count;
+// },0);
 
 /// Problem 2: Search for an Element
 /**
@@ -20,14 +34,34 @@ function countZeroes(matrix) {
  * @returns {string} - The position of the element or 'Element not found'.
  * @example
  * // returns 'Element found at row 1, column 1'
- * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
+ * findElement([[1, 2, 3], 
+ *              [4, 5, 6], 
+ *              [7, 8, 9]], 5)
  */
 function findElement(matrix, element) {
-  // Function implementation.
+  let coord = [undefined, undefined];
+  for (let i=0; i<matrix.length; i++){
+    let arr = matrix[i];
+    if (arr.length == undefined){
+      if (arr === element){
+        coord[0] = i;
+        coord[1] = 1;
+      }
+    } else {
+      for (let k=0; k<arr.length; k++){
+        if (arr[k] === element){
+          coord[0] = i;
+          coord[1] = k;
+        }
+
+    }
+  }
+  
+}
+return coord[0] == undefined ?  "Element not found" : `Element found at row ${coord[0]}, column ${coord[1]}`;
 }
 
 
-/// Problem 3: Grid Coordinate Logger
 
 /**
  * Logs the value and coordinates of each element in a 2D array.
@@ -38,7 +72,13 @@ function findElement(matrix, element) {
  */
 
 function logGridCoordinates(matrix) {
-  // Function implementation.
+  for (let i=0; i<matrix.length; i++){
+    let arr = matrix[i];
+    for (let j=0; j<arr.length; j++){
+      console.log(`Element at row ${i}, column ${j} is ${arr[j]}`);
+    }
+  }
+ 
 }
 
 
@@ -51,9 +91,18 @@ function logGridCoordinates(matrix) {
  */
 
 function organizeSchedule(schedule) {
-  // Function implementation.
+const weekDay = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  let scheduleObj = {};
+  for(let i = 0; i < schedule.length; i++){
+    let classInfo = schedule[i];
+    let temp = [];
+    for(let j = 0; j < classInfo.length; j++){
+      temp.push(`${classInfo[j].subject} with ${classInfo[j].teacher}`)
+    }
+    scheduleObj[weekDay[i]] = temp;
+  }
+  return scheduleObj;
 }
-
 
 /// Problem 5: Grid Function Calculator (Challenging)
 /**
@@ -63,8 +112,21 @@ function organizeSchedule(schedule) {
  * @example See tests in Jests in index.test.js for examples.
  */
 
-function calculateGridFunctions(grid) {
-  // Function implementation.
+function calculateGridFunctions(grid){
+  let totalSum = 0;
+  for(let i = 0; i < grid.length; i++){
+    let ops = grid[i];
+    let sum = 0;
+    for(let j = 0; j < ops.length; j++){
+      for(const key in ops[j]){
+        if(key != 'params'){
+          sum += ops[j][key](...ops[j].params);
+        }
+      }
+    }
+    totalSum += sum;
+  }
+  return totalSum;
 }
 
 
