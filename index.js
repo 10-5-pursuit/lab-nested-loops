@@ -107,9 +107,18 @@ function organizeSchedule(schedule) {
  */
 
 function calculateGridFunctions(grid) {
-
+let result = 0;
+for(let i = 0; i < grid.length; i++) {
+  let arr = grid[i];
+  for(let j = 0; j < arr.length; j++) {
+    let array = Object.values(arr[j]);
+    let func = array[0];
+    result += func(array[1][0], array[1][1], array[1][2])
+    // func(...array[1])
+  }
 }
-
+return result
+}
 
 
 module.exports = {
