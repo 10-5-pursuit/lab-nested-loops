@@ -1,3 +1,6 @@
+// Imports
+const gridCal = require("./data/gridCalc");
+const schedule = require("./data/schedule");
 /// Problem 1: Count Zeroes
 /**
  * Counts the number of zeroes in a 2D array.
@@ -9,7 +12,16 @@
  */
 function countZeroes(matrix) {
   // Function implementation.
+  let count = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j] == 0)
+        count++
+    }
+  }
+  return count;
 }
+console.log(countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]]));
 
 
 /// Problem 2: Search for an Element
@@ -24,8 +36,21 @@ function countZeroes(matrix) {
  */
 function findElement(matrix, element) {
   // Function implementation.
+  let row = null, col = null;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j] == element) {
+        row = i;
+        col = j;
+      }
+    }
+  }
+  if (row == null || col == null)
+    return "Element not found";
+  else
+    return `Element found at row ${row}, column ${col}`;
 }
-
+console.log(findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5));
 
 /// Problem 3: Grid Coordinate Logger
 
@@ -39,8 +64,19 @@ function findElement(matrix, element) {
 
 function logGridCoordinates(matrix) {
   // Function implementation.
-}
+  let txt = 'End Problem 3';
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (i == matrix.length - 1 && j == matrix[i].length - 1)
+        console.log(`Element at row ${i}, column ${j} is ${matrix[i][j]}`);
+      else
+        console.log(`Element at row ${i}, column ${j} is ${matrix[i][j]}`)
 
+    }
+  }
+  return txt;
+}
+console.log(logGridCoordinates([[1, 2], [3, 4]]));
 
 /// Problem 4: School Schedule Organizer
 /**
@@ -52,7 +88,48 @@ function logGridCoordinates(matrix) {
 
 function organizeSchedule(schedule) {
   // Function implementation.
+  let retObj = {};
+  if (schedule.length == 0)
+    return retObj;
+  for (let i = 0; i < schedule.length; i++) {
+    for (let j = 0; j < schedule[i].length; j++) {
+      switch (i) {
+        case 0: if (retObj.hasOwnProperty('Monday'))
+          retObj.Monday.push(`${schedule[i][j].subject} with ${schedule[i][j].teacher}`);
+        else
+          retObj["Monday"] = [`${schedule[i][j].subject} with ${schedule[i][j].teacher}`];
+          break;
+        case 1: if (retObj.hasOwnProperty('Tuesday'))
+          retObj.Tuesday.push(`${schedule[i][j].subject} with ${schedule[i][j].teacher}`);
+        else
+          retObj.Tuesday = [`${schedule[i][j].subject} with ${schedule[i][j].teacher}`];
+          break;
+        case 2: if (retObj.hasOwnProperty('Wednesday'))
+          retObj.Wednesday.push(`${schedule[i][j].subject} with ${schedule[i][j].teacher}`);
+        else
+          retObj.Wednesday = [`${schedule[i][j].subject} with ${schedule[i][j].teacher}`];
+          break;
+        case 3: if (retObj.hasOwnProperty('Thursday'))
+          retObj.Thursday.push(`${schedule[i][j].subject} with ${schedule[i][j].teacher}`);
+        else
+          retObj.Thursday = [`${schedule[i][j].subject} with ${schedule[i][j].teacher}`];
+          break;
+        case 4: if (retObj.hasOwnProperty('Friday'))
+          retObj.Friday.push(`${schedule[i][j].subject} with ${schedule[i][j].teacher}`);
+        else
+          retObj.Friday = [`${schedule[i][j].subject} with ${schedule[i][j].teacher}`];
+          break;
+
+      }
+
+    }
+  }
+  console.log(retObj);
+  return retObj;
 }
+// console.log(organizeSchedule(schedule));
+// console.log(organizeSchedule([]));
+
 
 
 /// Problem 5: Grid Function Calculator (Challenging)
@@ -65,14 +142,25 @@ function organizeSchedule(schedule) {
 
 function calculateGridFunctions(grid) {
   // Function implementation.
+  if (grid.length == 0)
+    return 0;
+  let sum = 0;
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[i].length; j++) {
+      let cb = Object.values(grid[i][j])[0];
+      sum += cb(...Object.values(grid[i][j])[1])
+    }
+  }
+  return sum;
 }
+console.log(calculateGridFunctions(gridCal));
 
 
 
 module.exports = {
-    countZeroes,
-    findElement,
-    logGridCoordinates,
-    organizeSchedule,
-    calculateGridFunctions
+  countZeroes,
+  findElement,
+  logGridCoordinates,
+  organizeSchedule,
+  calculateGridFunctions
 }
