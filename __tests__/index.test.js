@@ -5,6 +5,7 @@ const { countZeroes,
         calculateGridFunctions  } = require('../index.js');
 
 describe('countZeroes', () => {
+  
   test('correctly counts the number of zeroes in a 2D array', () => {
     const matrix1 = [
       [1, 0, 3],
