@@ -4,13 +4,23 @@
  * @param {number[][]} matrix - A 2D array of numbers.
  * @returns {number} - The count of zeroes in the matrix.
  * @example
- * // returns 2
+ * // returns 2 
  * countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
  */
 function countZeroes(matrix) {
-  // Function implementation.
+  let arrCount = 0;
+  for(let i = 0; i < matrix.length; i++){
+    let arr = matrix[i]
+    for(let k =0; k < arr.length; k++){
+      if (arr[k] === 0){
+        arrCount++
+        
+      }
+    }
+  } 
+  return arrCount;
 }
-
+console.log(countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]]));
 
 /// Problem 2: Search for an Element
 /**
@@ -23,8 +33,21 @@ function countZeroes(matrix) {
  * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
  */
 function findElement(matrix, element) {
-  // Function implementation.
-}
+  for(let i = 0; i < matrix.length ; i++){
+   let arr = matrix[i];
+    for(let k = 0; k < arr.length; k++ ){
+      if (arr[k] === element){
+        return `Element found at row ${i}, column ${k}`;
+
+        }
+
+      }
+    }
+    
+    return `Element not found`;
+  }
+  console.log(findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5 ))
+
 
 
 /// Problem 3: Grid Coordinate Logger
@@ -38,8 +61,15 @@ function findElement(matrix, element) {
  */
 
 function logGridCoordinates(matrix) {
-  // Function implementation.
+  for (let z = 0; z < matrix.length; z++) {
+      let arr = matrix[z];
+      for (let l = 0; l < arr.length; l++) {
+          return(`Element found at row ${z}, column ${l} is ${matrix[z][l]}`);
+      }
+  }
 }
+
+
 
 
 /// Problem 4: School Schedule Organizer
@@ -51,9 +81,29 @@ function logGridCoordinates(matrix) {
  */
 
 function organizeSchedule(schedule) {
-  // Function implementation.
-}
 
+  const weeklySchedule={
+
+  Monday: [],
+  Tuesday: [],
+  Wednesday: [],
+  Thursday: [],
+   Friday: []
+  }
+  
+  for(let i=0; i < schedule. length; i++) {
+  weeklySchedule ['Monday'] = schedule [0] 
+  weeklySchedule ['Tuesday'] = schedule [1]
+  weeklySchedule ['Wednesday'] = schedule [2]
+  weeklySchedule ['Thursday'] = schedule [3]
+  weeklySchedule ['Friday'] = schedule [4]
+  for(let j=0; j < schedule [i].length; j++){
+  }
+  console. log (weeklySchedule);
+  }
+  
+}
+const scheduleData = require('./data/schedule.js');
 
 /// Problem 5: Grid Function Calculator (Challenging)
 /**
