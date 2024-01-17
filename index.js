@@ -71,30 +71,15 @@ function logGridCoordinates(matrix) {
  */
 
 function organizeSchedule(schedule) {
-  const organizedSchedule = {};
+  let organizedSchedule = {};
+  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
 
-  for (let dayIndex = 0; dayIndex < schedule.length; dayIndex++) {
-    const dayName = getDayName(dayIndex);
-    const formattedClasses = [];
-
-    for (let classIndex = 0; classIndex < schedule[dayIndex].length; classIndex++) {
-      const classDetails = schedule[dayIndex][classIndex];
-      formattedClasses.push(formatClassDetails(classDetails));
-    }
-
-    organizedSchedule[dayName] = formattedClasses;
+  for (let i = 0; i < schedule.length; i++) {
+    let daySchedule = schedule[i];
+    organizedSchedule[days[i]] = daySchedule.map(classDetail => `${classDetail.subject} with ${classDetail.teacher}`);
   }
 
   return organizedSchedule;
-}
-
-function getDayName(dayIndex) {
-  const daysOfWeek = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"];
-  return daysOfWeek[dayIndex] || `Day ${dayIndex + 1}`;
-}
-
-function formatClassDetails(classDetails) {
-  return `${classDetails.subject} with ${classDetails.teacher}`;
 }
 
 /// Problem 5: Grid Function Calculator (Challenging)
@@ -106,18 +91,18 @@ function formatClassDetails(classDetails) {
  */
 
 function calculateGridFunctions(grid) {
-    let sum = 0;
-    for (let i = 0; i < grid.length; i++) {
-      for (let j = 0; j < grid[i].length; j++) {
-        const funcObj = grid[i][j];
-        const func = Object.values(funcObj)[0];
-        const params = funcObj.params;
-        sum += func(...params);
-      }
+  let sum = 0;
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[i].length; j++) {
+      let cell = grid[i][j];
+      let operationInCell = Object.keys(cell)[0]; 
+      let cellValues = cell[operationInCell]; 
+      let params = cell.params; 
+      sum += cellValues(...params); 
     }
-    return sum;
   }
-
+  return sum;
+}
 
 module.exports = {
     countZeroes,
