@@ -81,10 +81,19 @@ function logGridCoordinates(matrix) {
  */
 
 function organizeSchedule(schedule) {
-
-
+  let organizedSchedule = {};
+  let weekdays = ['Monday','Tuesday','Wednesday', 'Thursday','Friday']
+    for(let i = 0; i < schedule.length; i++) { 
+    let newArr = schedule[i]
+    let scheduleArray = []
+    for(let j = 0; j < newArr.length; j++) {
+      scheduleArray.push(`${newArr[j].subject} with ${newArr[j].teacher}`)
+   organizedSchedule[weekdays[i]] = scheduleArray;
+    }
+  }
+  return organizedSchedule;
 }
-
+console.log(organizeSchedule(schedule))
 
 /// Problem 5: Grid Function Calculator (Challenging)
 /**
@@ -95,15 +104,7 @@ function organizeSchedule(schedule) {
  */
 
 function calculateGridFunctions(grid) {
-  let results = 0;
-  for(let i = 0; i < grid.length; i++) { 
-    let newArr = grid[i];
-    for(let j = 0; j < newArr.length; j++) {
-      newArr
-    }
-  }
-
-  return results;
+  
 }
 
 
