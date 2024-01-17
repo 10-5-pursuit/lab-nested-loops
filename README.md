@@ -6,7 +6,7 @@ In this lab, you will be working with nested loops to solve various problems. Ne
 
 1. Fork and clone this repository in your command line.
    ```
-   git clone <url you provide>
+   git clone https://github.com/tascraig/lab-nested-loops.git
    ```
 
 2. Navigate to the cloned repository's directory on your command line. Then, run the following command:
@@ -48,7 +48,7 @@ Follow the prompts to exit the continuous test runner.
 Given the variety of tests in this lab, you might want to execute a single test file. You can do this by appending part of the test file's name to the `npm test` command:
 
 ```
-npm test countZeroes
+npm test countZeroes ^^^^^^^^^^^^^^^^^
 ```
 
 ### Running Specific Tests
