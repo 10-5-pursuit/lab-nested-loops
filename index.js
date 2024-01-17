@@ -46,7 +46,7 @@ function countZeroes(matrix) {
  */
 function findElement(matrix, element) {
   let value;
-  matrix.some((arr, i) => arr.forEach((num, j) => num === element ? value = `Element found at row ${i}, column ${j}` : num))
+  matrix.forEach((arr, i) => arr.forEach((num, j) => num === element ? value = `Element found at row ${i}, column ${j}` : num))
   return value ? value : 'Element not found'
 }
 // for(let i = 0; i < matrix.length; i++) {
