@@ -78,9 +78,9 @@ function organizeSchedule(schedule) {
     let daySchedule = schedule[i];
     organizedSchedule[days[i]] = daySchedule.map(classDetail => `${classDetail.subject} with ${classDetail.teacher}`);
   }
-
   return organizedSchedule;
 }
+
 
 /// Problem 5: Grid Function Calculator (Challenging)
 /**
@@ -90,19 +90,33 @@ function organizeSchedule(schedule) {
  * @example See tests in Jests in index.test.js for examples.
  */
 
+// function calculateGridFunctions(grid) {
+//   let sum = 0;
+//   for (let i = 0; i < grid.length; i++) {
+//     for (let j = 0; j < grid[i].length; j++) {
+//       let cell = grid[i][j];
+//       let operationInCell = Object.keys(cell)[0]; 
+//       let cellValues = cell[operationInCell]; 
+//       let params = cell.params; 
+//       sum += cellValues(...params); 
+//     }
+//   }
+//   return sum;
+// }
+
 function calculateGridFunctions(grid) {
   let sum = 0;
   for (let i = 0; i < grid.length; i++) {
-    for (let j = 0; j < grid[i].length; j++) {
-      let cell = grid[i][j];
-      let operationInCell = Object.keys(cell)[0]; 
-      let cellValues = cell[operationInCell]; 
-      let params = cell.params; 
-      sum += cellValues(...params); 
+    let arr = grid[i];
+    for (let j = 0; j < arr.length; j++) {
+      let array = Object.values(arr[j]);
+      let func = array[0];
+      sum += func(...array[1]);
     }
   }
-  return sum;
+  return sum
 }
+
 
 module.exports = {
     countZeroes,
