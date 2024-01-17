@@ -12,14 +12,14 @@ function countZeroes(matrix) {
   for (let i = 0; i < matrix.length;i++){
     let twoDArr = matrix[i]
   
-    for (let j = 0; j < twoDArr.length;i++){
+    for (let j = 0; j < twoDArr.length;j++){
       if(twoDArr[j] === 0){
         zeroCount++
       }
     }
   }
   return zeroCount
-  // Function implementation.
+  
 }
 
 
@@ -34,7 +34,15 @@ function countZeroes(matrix) {
  * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
  */
 function findElement(matrix, element) {
-  // Function implementation.
+  for (let i = 0; i < matrix.length; i++) {
+    
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j] === element) {
+        return `Element found at row ${i}, column ${j}`;
+      }
+    }
+  }
+  return 'Element not found';
 }
 
 
