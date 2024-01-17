@@ -38,23 +38,20 @@ function findElement(matrix, element) {
 
   for(let i = 0; i < matrix.length; i++){
     let arr = matrix[i]
-    for(j= 0; j < arr.length; j++){
+    for(let j= 0; j < arr.length; j++){
       if(arr[j] == element){
-        foundElement.push(i,j)
-
-        return `Element found at row ${i}, column ${j}`
-      }else{
-        return `Element not found`
+    return `Element found at row ${i}, column ${j}`
+      }
       }
     }
-  }
+  return `Element not found`
 }
 
-let matrixPre = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
 
 
 
-console.log(findElement(matrixPre, 5))
+
+console.log(findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5))
 
 
 /// Problem 3: Grid Coordinate Logger
@@ -67,9 +64,9 @@ console.log(findElement(matrixPre, 5))
  * logGridCoordinates([[1, 2], [3, 4]])
  */
 
-function logGridCoordinates(matrix) {
-  // Function implementation.
-}
+// function logGridCoordinates(matrix) {
+//   // Function implementation.
+// }
 
 
 /// Problem 4: School Schedule Organizer
@@ -80,9 +77,26 @@ function logGridCoordinates(matrix) {
  * @example See tests in Jests in index.test.js for examples.
  */
 
-function organizeSchedule(schedule) {
-  // Function implementation.
-}
+
+// const classSchedule = require("./data/schedule")
+
+// function organizeSchedule(schedule) {
+//   let classScehduleObj = {
+//    dayOfTheWeek : [`${subject} with ${teacher}`]
+//   }
+
+//   for(let i = 0; i < schedule.length ; i++){
+//     let arr = schedule[i];
+//     if(typeof arr[i] === "object"){
+//     for(let key in arr){
+//       return {
+//         arr.
+//       }
+//     }
+//   }
+//   }
+  
+// }
 
 
 /// Problem 5: Grid Function Calculator (Challenging)
@@ -102,7 +116,7 @@ function calculateGridFunctions(grid) {
 module.exports = {
     countZeroes,
     findElement,
-    logGridCoordinates,
-    organizeSchedule,
+    // logGridCoordinates,
+    // organizeSchedule,
     calculateGridFunctions
 }
