@@ -34,8 +34,27 @@ console.log(countZeroes([[1, 0, 3], [2, 5, 0], [7, 8, 9]]))
  * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
  */
 function findElement(matrix, element) {
-  // Function implementation.
+  let foundElement = [];
+
+  for(let i = 0; i < matrix.length; i++){
+    let arr = matrix[i]
+    for(j= 0; j < arr.length; j++){
+      if(arr[j] == element){
+        foundElement.push(i,j)
+
+        return `Element found at row ${i}, column ${j}`
+      }else{
+        return `Element not found`
+      }
+    }
+  }
 }
+
+let matrixPre = [[1, 2, 3], [4, 5, 6], [7, 8, 9]];
+
+
+
+console.log(findElement(matrixPre, 5))
 
 
 /// Problem 3: Grid Coordinate Logger
