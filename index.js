@@ -39,7 +39,15 @@ let count = 0;
  */
 function findElement(matrix, element) {
 
-
+  for(let i = 0; i < matrix.length; i++) { 
+    let newArr = matrix[i];
+    for(let j = 0; j < newArr.length; j++) {
+      if( newArr[j] === element){
+        return `Element found at row ${i}, column ${j}`
+      }
+    }
+  }
+  return 'Element not found'
 }
 
 /// Problem 3: Grid Coordinate Logger
