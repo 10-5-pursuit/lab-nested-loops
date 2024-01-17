@@ -1,7 +1,7 @@
-const { countZeroes, 
-        findElement, 
+const { countZeroes,
+        findElement,
         logGridCoordinates,
-        organizeSchedule, 
+        organizeSchedule,
         calculateGridFunctions  } = require('../index.js');
 
 describe('countZeroes', () => {
@@ -38,7 +38,7 @@ describe('findElement', () => {
       expect(findElement(matrix, 5)).toBe('Element found at row 1, column 1');
       expect(findElement(matrix, 9)).toBe('Element found at row 2, column 2');
     });
-  
+
     test('returns not found for an element not in the matrix', () => {
       const matrix = [
         [1, 2, 3],
@@ -121,8 +121,10 @@ describe('logGridCoordinates', () => {
 describe('organizeSchedule', () => {
   test('organizes a typical weekly schedule', () => {
     const schedule = [
-      [{ subject: "Math", teacher: "Mr. Smith" }, { subject: "History", teacher: "Mrs. Jones" }],
-      [{ subject: "Science", teacher: "Mr. Brown" }, { subject: "English", teacher: "Ms. Davis" }]
+      [{ subject: "Math", teacher: "Mr. Smith" },
+        { subject: "History", teacher: "Mrs. Jones" }],
+      [{ subject: "Science", teacher: "Mr. Brown" },
+        { subject: "English", teacher: "Ms. Davis" }]
     ];
     const organized = organizeSchedule(schedule);
     expect(organized).toEqual({

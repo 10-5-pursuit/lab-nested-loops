@@ -8,7 +8,15 @@
  * countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
  */
 function countZeroes(matrix) {
-  // Function implementation.
+  let count = 0;
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j] === 0) {
+        count++;
+      }
+    }
+  }
+  return count;
 }
 
 
@@ -23,8 +31,16 @@ function countZeroes(matrix) {
  * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
  */
 function findElement(matrix, element) {
-  // Function implementation.
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      if (matrix[i][j] === element) {
+        return `Element found at row ${i}, column ${j}`;
+      }
+    }
+  }
+  return 'Element not found';
 }
+
 
 
 /// Problem 3: Grid Coordinate Logger
@@ -38,33 +54,50 @@ function findElement(matrix, element) {
  */
 
 function logGridCoordinates(matrix) {
-  // Function implementation.
+  for (let i = 0; i < matrix.length; i++) {
+    for (let j = 0; j < matrix[i].length; j++) {
+      console.log(`Element at row ${i}, column ${j} is ${matrix[i][j]}`);
+    }
+  }
 }
 
 
 /// Problem 4: School Schedule Organizer
 /**
  * Organizes a weekly class schedule into a structured format. You will need to import the schedule from data/schedule.js.
+*/
+const classSchedule = require("./data/schedule");
+
+/*
  * @param {Object[][]} schedule - A 2D array where each element is an object with class details.
  * @returns {Object} - An object with organized schedule.
  * @example See tests in Jests in index.test.js for examples.
  */
+// function organizeSchedule(schedule) {
+//   for (let i = 0; i < schedule.length; i++) {
+//     return {
+//       Monday: [`${schedule[0].subject} with ${schedule[0].teacher}`]
+//     }
+//   }
+// }
 
-function organizeSchedule(schedule) {
-  // Function implementation.
-}
+// console.log(organizeSchedule(classSchedule))
 
 
 /// Problem 5: Grid Function Calculator (Challenging)
 /**
  * Calculates the sum of results from a grid of functions. You will need to import the grid from data/gridCalc.js.
+ */
+const grid = require("./data/gridCalc");
+
+/*
  * @param {Object[][]} grid - A 2D array where each element is an object containing a function and its parameters.
  * @returns {number} - The sum of the results of all functions in the grid.
  * @example See tests in Jests in index.test.js for examples.
  */
 
 function calculateGridFunctions(grid) {
-  // Function implementation.
+
 }
 
 
