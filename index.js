@@ -1,3 +1,7 @@
+const grid = require("./data/gridCalc")
+const schedule = require("./data/schedule")
+
+
 /// Problem 1: Count Zeroes
 /**
  * Counts the number of zeroes in a 2D array.
@@ -8,7 +12,16 @@
  * countZeroes([[1, 0, 3], [4, 5, 0], [7, 8, 9]])
  */
 function countZeroes(matrix) {
-  // Function implementation.
+  let count = 0;
+  for(let i = 0; i < matrix.length; i++){
+    let innerArr = matrix[i];
+    for(let j = 0; j < innerArr.length; j++){
+      if(innerArr[j] === 0){
+        count++;
+      }
+    }
+  }
+  return count;
 }
 
 
@@ -23,7 +36,14 @@ function countZeroes(matrix) {
  * findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5)
  */
 function findElement(matrix, element) {
-  // Function implementation.
+  for(let i = 0; i < matrix.length; i++){
+    for(let j = 0; j < matrix[i].length; j++){
+      if(matrix[i][j] === element){
+        return `Element found at row ${i}, column ${j}`
+      }
+    }
+  }
+  return "Element not found"
 }
 
 
@@ -38,7 +58,11 @@ function findElement(matrix, element) {
  */
 
 function logGridCoordinates(matrix) {
-  // Function implementation.
+  for(let i = 0; i < matrix.length; i++){
+    for(let j = 0; j < matrix[i].length; j ++){
+      console.log(`Element at row ${i}, column ${j} is ${matrix[i][j]}`)
+    }
+  }
 }
 
 
@@ -51,7 +75,28 @@ function logGridCoordinates(matrix) {
  */
 
 function organizeSchedule(schedule) {
-  // Function implementation.
+  let daysSchedule = {};
+  for(let i = 0; i < schedule.length; i++){
+    let day = "";
+    switch(i){
+      case 0 : day = "Monday";
+      break;
+      case 1 : day = "Tuesday";
+      break;
+      case 2 : day = "Wednesday";
+      break;
+      case 3 : day = "Thursday";
+      break;
+      case 4 : day = "Friday";
+      break;
+    }
+    let subjectAndTeacher = [];
+    for(let j = 0; j < schedule[i].length; j++){
+      subjectAndTeacher.push(`${schedule[i][j].subject} with ${schedule[i][j].teacher}`); 
+    }
+    daysSchedule[day] = subjectAndTeacher;
+  }
+  return daysSchedule;
 }
 
 
@@ -64,10 +109,18 @@ function organizeSchedule(schedule) {
  */
 
 function calculateGridFunctions(grid) {
-  // Function implementation.
+  let sum = 0;
+  for(let i = 0; i < grid.length; i++){
+    let currentSum = 0;
+    for(let j = 0; j < grid[i].length; j++){
+      let valuesArr = Object.values(grid[i][j])
+      currentSum += valuesArr[0](...valuesArr[1])
+    }
+    sum += currentSum;
+  }
+return sum;
 }
-
-
+calculateGridFunctions(grid)
 
 module.exports = {
     countZeroes,
@@ -76,3 +129,4 @@ module.exports = {
     organizeSchedule,
     calculateGridFunctions
 }
+
