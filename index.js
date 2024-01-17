@@ -53,11 +53,18 @@ function findElement(matrix, element) {
  * @param {any[][]} matrix - A 2D array.
  * @example
  * // logs: 'Element at row 0, column 0 is 1', 'Element at row 0, column 1 is 2', ...
- * logGridCoordinates([[1, 2], [3, 4]])
+                  //     0       1
+                  //   0  1    0  1
+* logGridCoordinates([[1, 2], [3, 4]])
  */
 
 function logGridCoordinates(matrix) {
-  // Function implementation.
+  for(let i = 0; i < matrix.length; i++){
+    for (let j = 0; j < matrix[i].length; j++){
+      console.log(`Element at row ${i}, column ${j} is ${matrix[i][j]}`); // remember that in order to log actual element the subscript has to be [i][j] if not delcared in variables
+    }
+  }
+
 }
 
 
