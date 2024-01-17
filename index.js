@@ -45,18 +45,21 @@ function countZeroes(matrix) {
  * 'Element found at row 1, column 1'
  */
 function findElement(matrix, element) {
-  for(let i = 0; i < matrix.length; i++) {
-    let arr = matrix[i];
-    for(let j = 0; j < arr.length; j++) {
-      if(arr[j] === element) {
-        return `Element found at row ${i}, column ${j}`
-      }
-    }
-  }
-  return 'Element not found'
+  let value;
+  matrix.some((arr, i) => arr.forEach((num, j) => num === element ? value = `Element found at row ${i}, column ${j}` : num))
+  return value ? value : 'Element not found'
 }
+// for(let i = 0; i < matrix.length; i++) {
+//   let arr = matrix[i];
+//   for(let j = 0; j < arr.length; j++) {
+//     if(arr[j] === element) {
+//       return `Element found at row ${i}, column ${j}`
+//     }
+//   }
+// }
+// return 'Element not found'
 
-// console.log(findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 1))
+console.log(findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 12))
 
 /// Problem 3: Grid Coordinate Logger
 
