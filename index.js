@@ -64,9 +64,15 @@ console.log(findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5))
  * logGridCoordinates([[1, 2], [3, 4]])
  */
 
-// function logGridCoordinates(matrix) {
-//   // Function implementation.
-// }
+function logGridCoordinates(matrix) {
+  for(let i = 0; i < matrix.length; i++){
+    let arr = matrix[i];
+    for(let j = 0; j < arr.length; j++){
+      console.log(`Element at row ${i}, colummn ${j} is ${arr[j]}`)
+    }
+  }
+}
+console.log([[1, 2], [3, 4]])
 
 
 /// Problem 4: School Schedule Organizer
@@ -78,25 +84,46 @@ console.log(findElement([[1, 2, 3], [4, 5, 6], [7, 8, 9]], 5))
  */
 
 
-// const classSchedule = require("./data/schedule")
+const scheduleData = require("./data/schedule")
 
-// function organizeSchedule(schedule) {
-//   let classScehduleObj = {
-//    dayOfTheWeek : [`${subject} with ${teacher}`]
-//   }
+function organizeSchedule(scheduleArr) {
+  let organizedSchedule = {
+   'Monday': [],
+   'Tuesday': [],
+   'Wednesday': [],
+   'Thursday': [],
+   'Friday': [],
+  }
 
-//   for(let i = 0; i < schedule.length ; i++){
-//     let arr = schedule[i];
-//     if(typeof arr[i] === "object"){
-//     for(let key in arr){
-//       return {
-//         arr.
-//       }
-//     }
-//   }
-//   }
+  for(let i = 0; i < scheduleArr.length ; i++){
+    let dayOfTheWeek = scheduleArr[i];
+    for(let j = 0; j < dayOfTheWeek.length; j++){
+      if(i === 0) {
+        organizedSchedule.Monday.push(`${dayOfTheWeek[j].subject} with ${dayOfTheWeek[j].teacher}`)
+      }
+      if(i === 1) {
+        organizedSchedule.Tuesday.push(`${dayOfTheWeek[j].subject} with ${dayOfTheWeek[j].teacher}`)
+      }
+      if(i === 2) {
+        organizedSchedule.Wednesday.push(`${dayOfTheWeek[j].subject} with ${dayOfTheWeek[j].teacher}`)
+      }
+      if(i === 3) {
+        organizedSchedule.Thursday.push(`${dayOfTheWeek[j].subject} with ${dayOfTheWeek[j].teacher}`)
+      }
+      if(i === 4) {
+        organizedSchedule.Friday.push(`${dayOfTheWeek[j].subject} with ${dayOfTheWeek[j].teacher}`)
+      }
+    }
+    
+  }
+  return organizedSchedule;
+}   
   
-// }
+  
+  console.log(organizeSchedule(scheduleData))
+  
+  
+
 
 
 /// Problem 5: Grid Function Calculator (Challenging)
@@ -116,7 +143,7 @@ function calculateGridFunctions(grid) {
 module.exports = {
     countZeroes,
     findElement,
-    // logGridCoordinates,
-    // organizeSchedule,
+    logGridCoordinates,
+    organizeSchedule,
     calculateGridFunctions
 }
