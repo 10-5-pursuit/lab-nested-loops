@@ -1,7 +1,7 @@
 module.exports = [
     [
       { subject: "Math", teacher: "Mr. Smith" },
-      { subject: "History", teacher: "Mrs. Jones" },
+      { subject: "History", teacher: "Mrs. Jones" },     // ["Math with Mr. Smith"]
       { subject: "Art", teacher: "Ms. Lively" }
     ],
     [
