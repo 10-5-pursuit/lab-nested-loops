@@ -9,6 +9,10 @@
  */
 function countZeroes(matrix) {
   // Function implementation.
+  return matrix.reduce((count, arr) => {
+    count += arr.filter(num => num == 0).length;
+    return count;
+  },0);
 }
 
 
@@ -24,6 +28,24 @@ function countZeroes(matrix) {
  */
 function findElement(matrix, element) {
   // Function implementation.
+  let coords = [undefined,undefined];
+  matrix.forEach((arr, index1) => {
+    if(arr.length == undefined){
+      if(arr == element){
+        coords[0] = index1;
+        coords[1] = 1;
+      }
+    }
+    else{
+      arr.forEach((num, index2) => {
+        if(num == element){
+          coords[0] = index1;
+          coords[1] = index2;
+        }
+      });
+    }
+  });
+  return coords[0] == undefined ? 'Element not found' : `Element found at row ${coords[0]}, column ${coords[1]}`;
 }
 
 
@@ -39,8 +61,11 @@ function findElement(matrix, element) {
 
 function logGridCoordinates(matrix) {
   // Function implementation.
+  matrix.forEach((arr, index1) => arr.forEach((num, index2) => {
+    console.log(`Element at row ${index1}, column ${index2} is ${num}`);
+  })
+  );
 }
-
 
 /// Problem 4: School Schedule Organizer
 /**
@@ -52,8 +77,12 @@ function logGridCoordinates(matrix) {
 
 function organizeSchedule(schedule) {
   // Function implementation.
+  return schedule.reduce((obj, arr, index) => {
+    const weekDay = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+    obj[weekDay[index]] = arr.map(sub => `${sub.subject} with ${sub.teacher}`);
+    return obj;
+  },{});
 }
-
 
 /// Problem 5: Grid Function Calculator (Challenging)
 /**
@@ -65,6 +94,17 @@ function organizeSchedule(schedule) {
 
 function calculateGridFunctions(grid) {
   // Function implementation.
+  return grid.reduce((total, arr) => {
+    total += arr.reduce((sum, op) => {
+      for(const key in op){
+        if(key != 'params'){
+          sum += op[key](...op.params);
+        }
+      }
+      return sum;
+    },0);
+    return total;
+  },0);
 }
 
 
