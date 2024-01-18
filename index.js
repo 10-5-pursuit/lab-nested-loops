@@ -79,10 +79,7 @@ function organizeSchedule(schedule) {
   // Function implementation.
   return schedule.reduce((obj, arr, index) => {
     const weekDay = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
-    obj[weekDay[index]] = arr.reduce((arr, sub) => {
-      arr.push(`${sub.subject} with ${sub.teacher}`);
-      return arr;
-    },[]);
+    obj[weekDay[index]] = arr.map(sub => `${sub.subject} with ${sub.teacher}`);
     return obj;
   },{});
 }
