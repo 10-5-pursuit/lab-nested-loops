@@ -24,4 +24,4 @@ module.exports = [
       { subject: "Economics", teacher: "Mr. Keynes" },
       { subject: "Philosophy", teacher: "Dr. Aristotle" }
     ]
-  ]
+]

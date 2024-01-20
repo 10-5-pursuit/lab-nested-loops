@@ -1,6 +1,6 @@
 module.exports = [
   [
-    { add: (x, y) => x + y, params: [1, 2] },
+    {add: (x, y) => x + y,params: [1, 2]},
     { double: x => x * 2, params: [5] },
     { multiply: (x, y) => x * y, params: [3, 3] }
   ],
@@ -16,4 +16,3 @@ module.exports = [
   ]
 ];
 
-  
