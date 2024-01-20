@@ -66,23 +66,29 @@ function logGridCoordinates(matrix) {
 /**
  * Organizes a weekly class schedule into a structured format. You will need to import the schedule from data/schedule.js.
 */
-const classSchedule = require("./data/schedule");
+const scheduleData = require("./data/schedule");
 
 /*
  * @param {Object[][]} schedule - A 2D array where each element is an object with class details.
  * @returns {Object} - An object with organized schedule.
  * @example See tests in Jests in index.test.js for examples.
+ * {
+    "Monday": ["Math with Mr. Smith", "History with Mrs. Jones"],
+    "Tuesday": ["Science with Mr. Brown", "English with Ms. Davis"]
+    }
  */
-// function organizeSchedule(schedule) {
-//   for (let i = 0; i < schedule.length; i++) {
-//     return {
-//       Monday: [`${schedule[0].subject} with ${schedule[0].teacher}`]
-//     }
-//   }
-// }
-
-// console.log(organizeSchedule(classSchedule))
-
+function organizeSchedule(schedule) {
+  const organizedSchedule = {};
+  const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'];
+  for (let i = 0; i < schedule.length; i++) {  //loop through outer array
+    organizedSchedule[days[i]] = [];
+    for (let j = 0; j < schedule[i].length; j++) { //loop through inner array
+      organizedSchedule[days[i]].push(`${schedule[i][j].subject} with ${schedule[i][j].teacher}`)
+    }
+  }
+  return organizedSchedule;
+}
+// console.log(organizeSchedule(scheduleData));
 
 /// Problem 5: Grid Function Calculator (Challenging)
 /**
@@ -95,12 +101,23 @@ const grid = require("./data/gridCalc");
  * @returns {number} - The sum of the results of all functions in the grid.
  * @example See tests in Jests in index.test.js for examples.
  */
-
 function calculateGridFunctions(grid) {
-
+  let sum = 0;
+  for (let i = 0; i < grid.length; i++) {
+    for (let j = 0; j < grid[i].length; j++) {
+      let obj = grid[i][j];
+      for (const key in obj) {
+        if (typeof obj[key] === 'function') {
+          let result = obj[key](...obj.params);
+          sum += result;
+          }
+      }
+    }
+  }
+  return sum;
 }
 
-
+console.log(calculateGridFunctions(grid))
 
 module.exports = {
     countZeroes,
